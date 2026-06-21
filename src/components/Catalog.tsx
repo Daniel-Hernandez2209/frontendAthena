@@ -15,7 +15,7 @@ export function Catalog({ activeBrand }: Props) {
   )
 
   return (
-    <section className="max-w-screen-xl mx-auto px-5 md:px-10 pb-24 pt-10">
+    <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 20px 96px' }}>
       {/* Section label */}
       <div className="flex items-center justify-between mb-8">
         <h2

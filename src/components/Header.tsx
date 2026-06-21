@@ -26,7 +26,7 @@ export function Header({ activeBrand, onBrandChange, onCoverClick }: Props) {
         borderBottom: scrolled ? '1px solid #e8e8e8' : '1px solid transparent',
       }}
     >
-      <div className="max-w-screen-xl mx-auto px-5 md:px-10">
+      <div style={{ maxWidth: '1280px', margin: '0 auto', paddingLeft: '20px', paddingRight: '20px' }}>
         {/* Top row */}
         <div className="flex items-center justify-between h-16">
           {/* Wordmark */}
