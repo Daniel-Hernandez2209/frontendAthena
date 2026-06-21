@@ -10,7 +10,7 @@ interface Props {
 
 export function Catalog({ activeBrand }: Props) {
   const filtered = useMemo(
-    () => (activeBrand === 'ALL' ? products : products.filter((p) => p.brand === activeBrand)),
+    () => (activeBrand === 'TODOS' ? products : products.filter((p) => p.brand === activeBrand)),
     [activeBrand]
   )
 
@@ -22,7 +22,7 @@ export function Catalog({ activeBrand }: Props) {
           className="text-black leading-none"
           style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(24px, 3vw, 32px)', letterSpacing: '0.02em' }}
         >
-          {activeBrand === 'ALL' ? 'COLECCIÓN COMPLETA' : activeBrand}
+          {activeBrand === 'TODOS' ? 'COLECCIÓN COMPLETA' : activeBrand}
         </h2>
         <span className="text-[11px] text-black/30 tracking-widest font-medium">
           {filtered.length} {filtered.length === 1 ? 'PRENDA' : 'PRENDAS'}

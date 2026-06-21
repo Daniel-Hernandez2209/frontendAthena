@@ -7,7 +7,7 @@ import { Catalog } from './components/Catalog'
 import type { Brand } from './data/products'
 
 export default function App() {
-  const [activeBrand, setActiveBrand] = useState<Brand>('ALL')
+  const [activeBrand, setActiveBrand] = useState<Brand>('TODOS')
   const heroRef = useRef<HTMLDivElement>(null)
 
   const scrollToCover = () => {
