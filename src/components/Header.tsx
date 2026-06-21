@@ -32,12 +32,16 @@ export function Header({ activeBrand, onBrandChange, onCoverClick }: Props) {
           {/* Wordmark */}
           <button
             onClick={onCoverClick}
-            className="focus-visible:outline-none"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '12px' }}
             aria-label="Ir al inicio"
           >
+            <img
+              src="/images/products/logo.jpeg"
+              alt="Athena Brand logo"
+              style={{ height: '54px', width: 'auto', objectFit: 'contain', display: 'block' }}
+            />
             <span
-              className="text-black leading-none tracking-tighter select-none"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '28px' }}
+              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '26px', color: '#0a0a0a', letterSpacing: '0.04em', lineHeight: 1, userSelect: 'none' }}
             >
               ATHENA BRAND
             </span>

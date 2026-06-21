@@ -29,7 +29,7 @@ export const galleryItems: GalleryItem[] = [
       "/images/products/modelo.jpeg",
     ],
     caption: "Temporada 2025",
-    span: "wide",
+    span: "normal",
   },
   {
     id: "g-002",
@@ -61,11 +61,18 @@ export const galleryItems: GalleryItem[] = [
     type: "images",
     images: ["/images/products/modelo.jpeg", "/images/products/portada.jpeg"],
     caption: "Street",
+    span: "wide",
   },
   {
     id: "g-006",
-    type: "images",
-    images: ["/images/products/modelo.jpeg", "/images/products/portada.jpeg"],
+    type: "video",
+    video: "/images/videos/video.mp4",
+    caption: "Street",
+  },
+  {
+    id: "g-007",
+    type: "video",
+    video: "/images/videos/video1.mp4",
     caption: "Street",
   },
 ];
