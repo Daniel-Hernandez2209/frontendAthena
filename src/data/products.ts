@@ -8,12 +8,15 @@
 // ─────────────────────────────────────────────────────────────────
 
 export type Brand =
-  | "ALL"
-  | "CORTEIZ"
-  | "REPRESENT"
-  | "SUPREME"
-  | "ESSENTIALS"
-  | "RHUDE";
+  | "TODOS"
+  | "PANTALONES"
+  | "BUZOS Y HOODIES"
+  | "CAMISETAS"
+  | "TENNIS"
+  | "ACCESORIOS"
+  | "BLUSAS"
+  | "VESTIDOS"
+  | "CONJUNTOS DEPORTIVOS";
 
 export interface Product {
   id: string;
@@ -22,13 +25,21 @@ export interface Product {
   price: string;
   originalPrice?: string;
   size?: string;
-  images: string[];      // [0] = principal, resto ciclan en hover
+  images: string[]; // [0] = principal, resto ciclan en hover
   sold?: boolean;
   badge?: string;
 }
 
 export const BRANDS: Brand[] = [
-  "ALL", "CORTEIZ", "REPRESENT", "SUPREME", "ESSENTIALS", "RHUDE",
+  "TODOS",
+  "PANTALONES",
+  "BUZOS Y HOODIES",
+  "CAMISETAS",
+  "TENNIS",
+  "ACCESORIOS",
+  "BLUSAS",
+  "VESTIDOS",
+  "CONJUNTOS DEPORTIVOS",
 ];
 
 export const COVER_IMAGE = "/images/products/portada.jpeg";
@@ -37,7 +48,7 @@ export const products: Product[] = [
   {
     id: "crtz-001",
     name: "Alcatraz Hoodie",
-    brand: "CORTEIZ",
+    brand: "BUZOS Y HOODIES",
     price: "$180",
     size: "M / L",
     images: [
@@ -50,7 +61,7 @@ export const products: Product[] = [
   {
     id: "crtz-002",
     name: "Rules The World Tee",
-    brand: "CORTEIZ",
+    brand: "BUZOS Y HOODIES",
     price: "$95",
     size: "S / M / L / XL",
     images: [
@@ -62,7 +73,7 @@ export const products: Product[] = [
   {
     id: "rpr-001",
     name: "Owners Club Hoodie",
-    brand: "REPRESENT",
+    brand: "BUZOS Y HOODIES",
     price: "$295",
     originalPrice: "$380",
     size: "S / M / L",
@@ -76,7 +87,7 @@ export const products: Product[] = [
   {
     id: "rpr-002",
     name: "Clo Cargo Pant",
-    brand: "REPRESENT",
+    brand: "PANTALONES",
     price: "$340",
     size: "S / M",
     images: [
@@ -88,7 +99,7 @@ export const products: Product[] = [
   {
     id: "sup-001",
     name: "Box Logo Hoodie FW24",
-    brand: "SUPREME",
+    brand: "CONJUNTOS DEPORTIVOS",
     price: "$450",
     size: "M",
     images: [
@@ -101,7 +112,7 @@ export const products: Product[] = [
   {
     id: "sup-002",
     name: "Arc Logo Crewneck",
-    brand: "SUPREME",
+    brand: "BLUSAS",
     price: "$220",
     size: "L / XL",
     images: [
@@ -113,7 +124,7 @@ export const products: Product[] = [
   {
     id: "ess-001",
     name: "Core Fleece Hoodie",
-    brand: "ESSENTIALS",
+    brand: "VESTIDOS",
     price: "$110",
     size: "S / M / L / XL",
     images: [
@@ -125,7 +136,7 @@ export const products: Product[] = [
   {
     id: "ess-002",
     name: "Relaxed Crewneck",
-    brand: "ESSENTIALS",
+    brand: "CONJUNTOS DEPORTIVOS",
     price: "$95",
     size: "M / L",
     images: [
@@ -137,7 +148,7 @@ export const products: Product[] = [
   {
     id: "rhd-001",
     name: "Chevron Crest Short",
-    brand: "RHUDE",
+    brand: "TENNIS",
     price: "$380",
     size: "S / M",
     images: [
@@ -149,7 +160,7 @@ export const products: Product[] = [
   {
     id: "rhd-002",
     name: "Traxedo Pant",
-    brand: "RHUDE",
+    brand: "TENNIS",
     price: "$520",
     size: "M / L",
     images: [
