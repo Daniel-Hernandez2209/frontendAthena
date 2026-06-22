@@ -169,4 +169,16 @@ export const products: Product[] = [
     ],
     sold: true,
   },
+  {
+    id: "rhd-003",
+    name: "Traxedo Pant",
+    brand: "BUZOS Y HOODIES",
+    price: "$520",
+    size: "M / L",
+    images: [
+      "/images/products/pantalon.jpeg",
+      "/images/products/conjunto.jpeg",
+    ],
+    sold: true,
+  },
 ];
