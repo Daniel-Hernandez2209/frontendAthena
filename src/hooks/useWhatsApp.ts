@@ -3,7 +3,7 @@ import type { Product } from '../data/products'
 const WA_NUMBER = '573106229118' // 57 = Colombia
 
 export function openWhatsApp(product: Product) {
-  const imageUrl = `${window.location.origin}${product.images[0]}`
+  const imageUrl = `https://urban-crown.vercel.app${product.images[0]}`
 
   const message = [
     `Hola! estoy interesado en esta prenda y quiero más información`,
