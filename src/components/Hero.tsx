@@ -2,7 +2,7 @@ import { COVER_IMAGE } from '../data/products'
 
 export function Hero() {
   return (
-    <section style={{ position: 'relative', width: '100%', height: '65vh', minHeight: '420px', maxHeight: '680px', overflow: 'hidden', background: '#0a0a0a' }}>
+    <section style={{ position: 'relative', width: '100%', height: '78vh', minHeight: '500px', maxHeight: '820px', overflow: 'hidden', background: '#0a0a0a' }}>
       {/* Imagen cinemática — recorte intencional estilo banner */}
       <img
         src={COVER_IMAGE}
