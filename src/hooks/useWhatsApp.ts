@@ -3,7 +3,7 @@ import type { Product } from '../data/products'
 const WA_NUMBER = '573106229118' // 57 = Colombia
 
 export function openWhatsApp(product: Product) {
-  const productUrl = `${window.location.origin}${window.location.pathname}#${product.id}`
+  const imageUrl = `${window.location.origin}${product.images[0]}`
 
   const message = [
     `Hola! estoy interesado en esta prenda y quiero más información`,
@@ -12,7 +12,7 @@ export function openWhatsApp(product: Product) {
     product.size ? `Talla: ${product.size}` : null,
     `Precio: ${product.price}`,
     ``,
-    `Ver prenda: ${productUrl}`,
+    imageUrl,
   ]
     .filter((l) => l !== null)
     .join('\n')
