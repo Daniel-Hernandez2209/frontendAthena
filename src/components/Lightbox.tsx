@@ -57,6 +57,7 @@ export function Lightbox({ images, startIndex, onClose }: Props) {
         {/* Prev */}
         {images.length > 1 && (
           <button
+            className="lightbox-prev"
             onClick={prev}
             style={{
               position: 'absolute', left: '-52px', top: '50%', transform: 'translateY(-50%)',
@@ -70,6 +71,7 @@ export function Lightbox({ images, startIndex, onClose }: Props) {
         {/* Next */}
         {images.length > 1 && (
           <button
+            className="lightbox-next"
             onClick={next}
             style={{
               position: 'absolute', right: '-52px', top: '50%', transform: 'translateY(-50%)',

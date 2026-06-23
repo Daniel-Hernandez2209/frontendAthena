@@ -98,6 +98,7 @@ export function ProductCard({ product }: Props) {
           {/* CTA WhatsApp — click NO abre lightbox */}
           {!product.sold && (
             <div
+              className="card-whatsapp-cta"
               style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
                 opacity: hovered ? 1 : 0,

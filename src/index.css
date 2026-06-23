@@ -40,3 +40,43 @@ body {
   background: #ccc;
   border-radius: 2px;
 }
+
+/* ── Responsive helpers ── */
+
+/* Hero: trust badges en fila apretada en móvil */
+@media (max-width: 480px) {
+  .hero-badges {
+    gap: 6px !important;
+    padding: 0 12px !important;
+    bottom: 14px !important;
+  }
+  .hero-badge {
+    font-size: 9px !important;
+    padding: 4px 10px !important;
+  }
+}
+
+/* En móvil: botón WhatsApp siempre visible en la card */
+@media (hover: none) {
+  .card-whatsapp-cta {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
+/* Lightbox: botones dentro de imagen en pantallas pequeñas */
+@media (max-width: 600px) {
+  .lightbox-prev {
+    left: 8px !important;
+  }
+  .lightbox-next {
+    right: 8px !important;
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    top: auto !important;
+    bottom: 56px !important;
+    transform: none !important;
+    position: fixed !important;
+  }
+}

@@ -2,7 +2,7 @@ import { COVER_IMAGE } from '../data/products'
 
 export function Hero() {
   return (
-    <section style={{ position: 'relative', width: '100%', height: '78vh', minHeight: '500px', maxHeight: '820px', overflow: 'hidden', background: '#0a0a0a' }}>
+    <section style={{ position: 'relative', width: '100%', height: '78svh', minHeight: '420px', maxHeight: '820px', overflow: 'hidden', background: '#0a0a0a' }}>
       {/* Imagen cinemática — recorte intencional estilo banner */}
       <img
         src={COVER_IMAGE}
@@ -27,9 +27,9 @@ export function Hero() {
       </div>
 
       {/* Trust badges — esquina inferior */}
-      <div style={{ position: 'absolute', bottom: '22px', left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', padding: '0 20px' }}>
+      <div className="hero-badges" style={{ position: 'absolute', bottom: '22px', left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', padding: '0 20px' }}>
         {['100% Prendas Premium', 'Envíos a toda Colombia', 'Atención por Instagram'].map((text) => (
-          <span key={text} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.10)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.18)', color: '#ffffff', fontSize: '11px', fontWeight: 500, padding: '5px 14px', borderRadius: '999px', letterSpacing: '0.04em' }}>
+          <span key={text} className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.10)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.18)', color: '#ffffff', fontSize: '11px', fontWeight: 500, padding: '5px 14px', borderRadius: '999px', letterSpacing: '0.04em' }}>
             <span style={{ fontSize: '8px' }}>✦</span>{text}
           </span>
         ))}
