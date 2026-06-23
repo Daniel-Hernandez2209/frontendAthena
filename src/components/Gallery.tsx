@@ -1,11 +1,111 @@
+import { useEffect, useRef, useState } from 'react'
 import { galleryItems } from '../data/gallery'
+import type { GalleryItem } from '../data/gallery'
+
+function VideoItem({ item }: { item: GalleryItem }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [playing, setPlaying] = useState(false)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().then(() => setPlaying(true)).catch(() => setPlaying(false))
+        } else {
+          video.pause()
+          setPlaying(false)
+        }
+      },
+      { threshold: 0.3 }
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
+  const handlePlayClick = () => {
+    const video = videoRef.current
+    if (!video) return
+    if (video.paused) {
+      video.play().then(() => setPlaying(true)).catch(() => {})
+    } else {
+      video.pause()
+      setPlaying(false)
+    }
+  }
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <video
+        ref={videoRef}
+        src={item.video}
+        loop
+        muted
+        playsInline
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
+      {/* Botón play/pausa visible en móvil cuando no reproduce */}
+      {!playing && (
+        <button
+          onClick={handlePlayClick}
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            background: 'rgba(0,0,0,0.25)', border: 'none', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <div style={{
+            width: '48px', height: '48px', borderRadius: '50%',
+            background: 'rgba(255,255,255,0.9)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#0a0a0a">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </button>
+      )}
+      {/* Tap para pause cuando está reproduciendo */}
+      {playing && (
+        <button
+          onClick={handlePlayClick}
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            background: 'transparent', border: 'none', cursor: 'pointer',
+          }}
+        />
+      )}
+    </div>
+  )
+}
+
+function ImageItem({ item }: { item: GalleryItem }) {
+  const [idx, setIdx] = useState(0)
+  const images = item.images ?? []
+
+  useEffect(() => {
+    if (images.length <= 1) return
+    const t = setInterval(() => setIdx((i) => (i + 1) % images.length), 2000)
+    return () => clearInterval(t)
+  }, [images.length])
+
+  return (
+    <img
+      src={images[idx]}
+      alt={item.caption ?? ''}
+      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'opacity 0.4s ease' }}
+      loading="lazy"
+    />
+  )
+}
 
 export function Gallery() {
   return (
-    <section style={{ background: '#ffffff', padding: '80px 0' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+    <section style={{ background: '#ffffff', padding: 'clamp(40px, 8vw, 80px) 0' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px' }}>
         {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '32px' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '24px' }}>
           <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(26px, 3vw, 36px)', color: '#0a0a0a', letterSpacing: '0.04em', margin: 0 }}>
             LOOKBOOK
           </h2>
@@ -14,26 +114,20 @@ export function Gallery() {
           </p>
         </div>
 
-        {/* Grid estático */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
+        {/* Grid responsive */}
+        <div className="gallery-grid">
           {galleryItems.map((item) => (
-            <div key={item.id} style={{ gridColumn: item.span === 'wide' ? 'span 2' : 'span 1', position: 'relative', overflow: 'hidden', aspectRatio: '3/4', background: '#f0f0f0' }}>
+            <div
+              key={item.id}
+              className={item.span === 'wide' ? 'gallery-item gallery-item--wide' : 'gallery-item'}
+            >
               {item.type === 'video' && item.video ? (
-                <video
-                  src={item.video}
-                  autoPlay loop muted playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                />
+                <VideoItem item={item} />
               ) : (
-                <img
-                  src={item.images?.[0]}
-                  alt={item.caption ?? ''}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  loading="lazy"
-                />
+                <ImageItem item={item} />
               )}
               {item.caption && (
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '32px 14px 14px', background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }}>
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '32px 14px 14px', background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)', pointerEvents: 'none' }}>
                   <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '11px', letterSpacing: '0.18em', fontWeight: 500, margin: 0, textTransform: 'uppercase' }}>{item.caption}</p>
                 </div>
               )}
